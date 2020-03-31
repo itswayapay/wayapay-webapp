@@ -1,0 +1,92 @@
+@import '../../../global';
+.wayapay-guarantee {
+    color: $primaryGreen;
+}
+.destinayion-txt {
+    font-size: 17px;
+}
+.form-title, .destinayion-txt{
+    font-weight: 700;
+}
+.form-title{
+    color: $primaryGreen;
+    font-size: 20px !important;
+}
+
+.select-destination-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 0px 0px 10px;
+    .select-img {
+        margin-left: 15px;
+    }
+}
+.form-title {
+    font-size: 28px;
+}
+
+.wayapay-guarantee {
+    text-align: center;
+    font-size: 12px;
+}
+.transaction-top-wrapper {
+    margin: 0px 10px;
+    .transaction-wrapper {
+        width: 95%;
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        padding: 15px;
+        div {
+            width: 100%;
+        }
+        .transaction-item {
+            font-size: 15px;
+            padding-bottom: 5px;
+            span:nth-child(2){
+                float:right
+            }
+        }
+        .transaction-item:nth-last-child(1){
+            padding-top: 10px;
+        } 
+    }
+}
+
+.arrow-toggle {
+    float: right;
+    font-size: 30px;
+}
+
+.select-currency {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+.select-border {
+    display: flex;
+  }
+.border-input, .select-border {
+    height: 70px;
+    display: flex;
+    border: 1px solid $primaryGreen;
+}
+.input-field {
+    margin-top: 10px;
+    font-size: 50px;
+    font-weight: 900;
+}
+    
+@media only screen and (max-width: 767px) {
+    /* phones */
+    
+}
+
+@media only screen and (max-width: 360px) {
+  /* small phones */
+  .input-field {
+    font-size: 35px;
+  }
+}

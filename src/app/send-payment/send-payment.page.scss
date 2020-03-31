@@ -1,0 +1,48 @@
+@import '../../global';
+.sending-form-txt, .sending-form-txt-grey {
+    font-weight: bold;
+}
+.sending-form-txt , .sending-form-txt-grey {
+    font-size: 30px;
+}
+.to-form-txt {
+    font-size: 25px;
+}
+.pay-now-btn, .input-list-wrapper {
+    margin-top: 20px;
+}
+.send-to-details {
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: row;
+    div {
+        height: 100%;
+        width: 50%;
+                
+    };
+    .sent-to-flag {
+        margin-top: 20px;   
+    }
+    .send-to-img-wrapper{
+        width: 60px;
+        height: 60px;
+        .send-to-img{
+            height: inherit;
+            width: inherit;
+            border-radius: 50%;
+        }
+    }
+    
+}
+
+.visa-icon {
+    width: 60px;
+}
+.credit-hidden-txt{
+    text-align: center;
+    font-size: 25px;
+    margin: 0px;
+}
+.arrow-down, .credit-hidden-txt, .account-details-txt {
+    color: #696969;
+}

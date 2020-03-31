@@ -1,0 +1,19 @@
+@import '../../../global';
+
+
+.header-wrapper, .success-wrapper {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.success-wrapper {
+    text-align: center;
+    img {
+        height: 150px;
+    }
+}
+.success-txt-1 {
+    font-weight: 700;
+    padding: 0px 20px;
+    color: $blackSecondary;
+}

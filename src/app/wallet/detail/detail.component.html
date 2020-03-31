@@ -1,0 +1,63 @@
+<ion-content>
+
+  <div class="background-wrapper">
+    <div class="background-top">&nbsp;</div>
+    <div class="body-content-wrapper">
+      <div class="close-icon" (click)="close()">
+        <ion-icon name="close" color="primary"></ion-icon>
+      </div>
+      <div class="wallet-details-wrapper">
+        <div class="wallet-details-title">
+          <span>Wayapay Wallet Balance:</span>
+        </div>
+        <!-- Wallet Amt Start-->
+        <div class="wallet-account-det-wrapper">
+          <div class="wallet-amt-wrapper">
+            <span>7,003.89</span>
+          </div>
+          <div class="wallet-currency-wrapper">
+            <div> <img src="https://www.countryflags.io/us/flat/32.png">
+            </div>
+            <div class="wallet-currency-txt"><span>USD</span>
+            </div>
+          </div>
+        </div>
+        <!-- Wallet Amt End  -->
+      </div>
+      <!-- Shortcuts start -->
+      <div class="wallet-shortcuts-wrapper">
+        <!-- Add Shortcut start -->
+        <div class="wallet-shortcut-item" (click)="redirectToAdd()">
+          <div class="shortcut-icon-wrapper">
+            <ion-icon name="add"></ion-icon>
+          </div>
+          <div class="add-balance-subtitle">
+            <span>Add</span>
+          </div>
+        </div>
+        <!-- Add Shortcut End   -->
+        <!-- Send Shortcut Start -->
+        <div class="wallet-shortcut-item" (click)="redirectToSend()">
+          <div class="shortcut-icon-wrapper">
+            <ion-icon name="share-alt"></ion-icon>
+          </div>
+          <div class="add-balance-subtitle">
+            <span>Send</span>
+          </div>
+        </div>
+        <!-- Send Shortcut End   -->
+        <!-- Convert Shortcut Start-->
+        <div class="wallet-shortcut-item" (click)="redirectToConvert()">
+          <div class="shortcut-icon-wrapper">
+            <ion-icon name="repeat"></ion-icon>
+          </div>
+          <div class="add-balance-subtitle">
+            <span>Convert</span>
+          </div>
+        </div>
+        <!-- Convert Shortcut End   -->
+      </div>
+      <!-- Shortcuts end   -->
+    </div>
+  </div>
+</ion-content>

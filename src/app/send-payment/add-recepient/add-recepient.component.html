@@ -1,0 +1,158 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-grid no-margin no-padding>
+      <ion-row>
+        <ion-col size="6">
+          <div class="back-btn-wrapper" (click)="backRedirect()">
+            <ion-icon name="arrow-back"></ion-icon><span> {{title}}</span>
+          </div>
+        </ion-col>
+        <ion-col size="6" class="top-nav-logo-wrapper">
+          <img src="../../../assets/logo/icon-white.svg" alt="Wayapay" routerLink="/account">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" padding>
+        <span class="title-txt">Add a receipient</span>
+      </ion-col>
+
+      <ion-col size="12" class="">
+        <ion-item>
+          <ion-label position="floating">Name of recipient</ion-label>
+          <ion-input inputmode="text" name="recepient_name" [(ngModel)]="recepient_name" placeholder="Full Name"
+            required="true">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12" class="">
+        <ion-item>
+          <ion-label position="floating">Email address (optional)</ion-label>
+          <ion-input inputmode="email" name="recepient_email" [(ngModel)]="recepient_email" placeholder="Email address"
+            required="false">
+          </ion-input>
+        </ion-item>
+        <p class="form-hint"><small>An email will be sent to this recipient to notify them about all
+            transactions</small></p>
+      </ion-col>
+      <ion-col size="12">
+        <span class="title-txt-small">Address</span>
+      </ion-col>
+
+      <ion-col size="12" class="">
+        <ion-item>
+          <ion-label position="floating">Country</ion-label>
+          <ion-input inputmode="text" name="recepient_country" [(ngModel)]="recepient_country" placeholder=""
+            required="true">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" class="">
+        <ion-item>
+          <ion-label position="floating">Address</ion-label>
+          <ion-input inputmode="text" name="recepient_address" [(ngModel)]="recepient_address" placeholder=""
+            required="true">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="6" class="">
+        <ion-item>
+          <ion-label position="floating">City</ion-label>
+          <ion-input inputmode="text" name="recepient_city" [(ngModel)]="recepient_city" placeholder="" required="true">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6" class="">
+        <ion-item>
+          <ion-label position="floating">Post code</ion-label>
+          <ion-input inputmode="text" name="recepient_postCode" [(ngModel)]="recepient_postCode" placeholder=""
+            required="true">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12" class="account-details-wrapper">
+        <span class="title-txt-small">Account details</span>
+      </ion-col>
+
+      <ion-col size="12" padding>
+        <ion-segment (ionChange)="segmentChanged($event)" [(ngModel)]="selectTab" color="primary"
+          class="segment-wrapper">
+          <ion-segment-button value="bank">
+            <ion-label class="selector-title">LOCAL BANK ACCOUNT</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="mpesa">
+            <ion-label class="selector-title">M-PESA</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-col>
+      <ng-container *ngIf="selectTab === 'bank'; else mpesaTemplate">
+        <ion-col size="12" no-padding>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="12" no-padding>
+                <ion-item class="item-wrapper">
+                  <ion-label position="floating" color="primary" class="label-txt">Choose recepient bank </ion-label>
+                  <ion-select cancelText="Dismiss">
+                    <ion-select-option *ngFor="let i of bankingOptions" [value]="i.slug ">{{i.name}}
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+              <ion-col size="12">
+                <ion-input inputmode="text" class="enter-phone-input" name="account-nymber" type="text"
+                  placeholder="Account number" required="true">
+                </ion-input>
+              </ion-col>
+
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ng-container>
+      <ng-template #mpesaTemplate>
+        <ion-col size="12" no-padding>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="12" no-padding>
+                <ion-item class="item-wrapper">
+                  <ion-label position="floating" color="primary" class="label-txt">Choose mobile wallet
+                  </ion-label>
+                  <ion-select cancelText="Dismiss">
+                    <ion-select-option *ngFor="let i of mobileBankingOptions" [value]="i.slug ">{{i.name}}
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+              <ion-col size="12">
+                <ion-input inputmode="text" class="enter-phone-input" name="mobile-number" type="text"
+                  placeholder="Enter mobile account number" required="true">
+                </ion-input>
+                <p class="form-hint"><small>Crosscheck to confirm</small></p>
+              </ion-col>
+              <ion-col size="12">
+                <div class="add-user-wrapper">
+                  <span class="title-txt-small">or select from phonebook</span><img
+                    src="../../assets/icons/user-add.svg" alt="arrow" class="add-user-img">
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ng-template>
+
+
+
+      <ion-col size="12" class="ion-align-self-ceter">
+        <ion-button class="primary-btn-lg" shape="round" strong="true" expand="full" (click)="continue()">Continue
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

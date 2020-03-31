@@ -1,0 +1,148 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-grid no-margin no-padding>
+      <ion-row>
+        <ion-col size="6">
+          <div class="back-btn-wrapper" (click)="backRedirect()">
+            <ion-icon name="arrow-back"></ion-icon><span> {{title}}</span>
+          </div>
+        </ion-col>
+        <ion-col size="6" class="top-nav-logo-wrapper">
+          <img src="../../../assets/logo/icon-white.svg" alt="Wayapay" routerLink="/account">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="!paymentLoading && !sendSuccessful; else loadingTemp">
+    <ion-grid>
+      <ion-row padding>
+        <ion-col size="8" class="input-list-wrapper">
+          <ion-item>
+            <ion-label color="primary" position="floating"><span class="sending-form-txt">You're sending</span>
+            </ion-label>
+            <ion-input inputmode="text" name="amount" placeholder="Amount to send" required="true">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size=4 class="input-list-wrapper">
+          <ion-item>
+            <ion-label position="floating">&nbsp;</ion-label>
+            <ion-select placeholder="" [(ngModel)]="selectCurrency" style="margin-top: 10px;">
+              <ion-select-option value="KES">KES</ion-select-option>
+              <ion-select-option value="USD">USD</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="8" class="input-list-wrapper">
+          <ion-item>
+            <ion-label color="primary" position="floating"><span class="to-form-txt sending-form-txt">to:</span>
+            </ion-label>
+            <ion-input inputmode="text" name="to" placeholder="+254 723 456 789" required="true">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size=4 class="input-list-wrapper">
+          <div class="send-to-details">
+            <div>
+              <img src="https://www.countryflags.io/ke/flat/32.png" class="sent-to-flag">
+            </div>
+            <div>
+              <div class="send-to-img-wrapper"><img src="../../assets/dummy/man_1.jpg" alt="" class="send-to-img">
+              </div>
+            </div>
+          </div>
+        </ion-col>
+
+        <ion-col size="8" class=" input-list-wrapper">
+          <ion-item>
+            <ion-label color="primary" position="floating"><span class="sending-form-txt-grey">You'll pay</span>
+            </ion-label>
+            <ion-input inputmode="text" name="amount" color="primary" placeholder="Amount to send" required="true">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+
+        <!-- <ion-col size="1" class="input-list-wrapper">
+              <img src="https://www.countryflags.io/{{payCurrency}}/flat/32.png">
+            </ion-col> -->
+        <ion-col size="4" class="input-list-wrapper">
+          <ion-item>
+            <ion-label position="floating">&nbsp;</ion-label>
+            <ion-select color="primary" placeholder="{{payCurrency}}" [(ngModel)]="payCurrency"
+              style="margin-top: 10px;">
+              <ion-select-option value="ke"> <img src="https://www.countryflags.io/{{payCurrency}}/flat/32.png">
+                KES</ion-select-option>
+              <ion-select-option value="us"> <img src="https://www.countryflags.io/{{payCurrency}}/flat/32.png">
+                USD</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12" class="input-list-wrapper">
+          <span class="account-details-txt"><b>Account:</b> Anne Kamau Otieno</span>
+        </ion-col>
+        <ion-col size="12" class="input-list-wrapper">
+          <ion-grid no-padding>
+            <ion-row no-padding>
+              <ion-col size="2">
+                <img src="../../assets/payment/visa.png" alt="" class="visa-icon">
+              </ion-col>
+              <ion-col size="9">
+                <h4 class="credit-hidden-txt">*** *** *** 7890</h4>
+              </ion-col>
+              <ion-col size="1">
+                <ion-icon name="arrow-down" class="arrow-down"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+        <ion-col size="12" class="input-list-wrapper">
+          <p class="exchange-rate-txt">Exchange rate: USD 1 = KES 103.7</p>
+        </ion-col>
+
+        <ion-col size="12" class="ion-align-self-ceter pay-now-btn input-list-wrapper">
+          <ion-button class="primary-btn-lg" shape="round" strong="true" expand="full" (click)="payNow()">Pay Now
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-container>
+  <ng-template #loadingTemp>
+    <ng-container *ngIf="paymentLoading; else successTemp;">
+      <ion-grid no-padding>
+        <ion-row no-padding>
+          <ion-col size="12">
+            <div class="spinner">
+              <div class="double-bounce1"></div>
+              <div class="double-bounce2"></div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-container>
+    <ng-template #successTemp>
+      <ion-grid>
+        <ion-row padding>
+          <ion-col size="12" class="success-icon-wrapper">
+            <img src="../../../assets/success.jpg" alt="Success">
+          </ion-col>
+          <ion-col size="12">
+            <h3 class="success-title">
+              Success!<br />
+              Sent Money to John.
+            </h3>
+          </ion-col>
+
+          <ion-col size="12" class="ion-align-self-ceter">
+            <ion-button class="primary-btn-lg" shape="round" strong="true" expand="full" (click)="routeTo()">View
+              Transaction History </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-template>
+  </ng-template>
+</ion-content>

@@ -1,0 +1,86 @@
+@import '../../../global';
+
+.segment-wrapper {
+    min-height: 40px;
+    margin-top: 10px;
+}
+
+.card-title{
+    margin: 0px;
+    color: $textGrey;
+    font-size: 10px;
+}
+.card-details {
+    margin: 0px;
+    color: $primaryGreen;
+}
+.card-details-small {
+    font-size: 13px;
+ }
+ .visa-card-img{
+    height: 30px;
+ }
+ .selector-title{
+    font-weight: bold;
+}
+
+.card-top-wrapper{
+    background-color: $backgroundColor;
+    .card-wrapper {
+        height: 180px;
+        background-color: #fff;
+        margin: 10px;
+        border-radius: 5px;
+        box-shadow: 0px 1px 10px 3px #bfccd0;
+
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+        div{
+            width: 100%;
+        }
+        .card-img-wrapper{
+            .card-wayapay-img {
+                height: 40px;
+                margin: 5px;
+            }
+        }
+        .card-details-wrapper {
+            padding: 0px 10px;
+        }
+        .card-details-bottom-wrapper{
+            display: flex;
+            flex-flow: row;
+            flex-wrap: wrap;
+            padding: 0px 10px;
+            div:nth-child(1),div:nth-child(2) {
+                width:40%;
+            }
+            div:nth-child(3) {
+                width:20%;
+            }
+        }
+        
+    }
+    
+}
+.card-form-wrapper {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+.payment-cards{
+    height: 55px;
+}
+
+.payment-cards-wrapper {
+    text-align: center;
+}
+// .success-title {
+//     color: $primaryGreen;
+//     text-align: center;
+//     margin-top: 70%;
+// }
+.primary-success-txt {
+    text-align: center;
+}

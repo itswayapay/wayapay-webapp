@@ -1,0 +1,19 @@
+@import '../../../global';
+
+.form-title {
+    font-weight: bold;
+    color: $primaryGreen;
+}
+.veridication-hint {
+    color: $textGrey;
+    text-align: center;
+    // margin: 0px;
+}
+.verify-btn-wrapper{
+    // padding-top: 40%;
+    margin-top: 30px;
+}
+.text-description {
+    text-align: center;
+    color: $textGrey;
+}

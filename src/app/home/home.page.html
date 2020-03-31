@@ -1,0 +1,167 @@
+<ion-menu side="start" menuId="first" type="overlay" content-id="content">
+  <ion-content>
+    <ion-grid class="ion-no-padding ion-no-margin">
+      <ng-container *ngIf="userProfile">
+        <ion-row>
+          <ion-col size="12" class="side-menu-header-wrapper">
+            <ion-grid class="ion-padding ion-no-margin">
+              <ion-row>
+                <ion-col size="12">
+                  <img src="../../assets/logo/icon-white.svg" alt="Wayapay" class="side-menu-logo">
+                </ion-col>
+                <ion-col size="12">
+                  <h3 class="side-menu-header">{{userProfile.profile.first_name}} </h3>
+                </ion-col>
+                <ion-col size="12">
+                  <h6 class="side-menu-sub-header">Wayapay account ID: {{userProfile.profile.pk}}</h6>
+                </ion-col>
+                <ion-col size="12">
+                  <h6 class="side-menu-sub-header">+254{{userProfile.profile.phone_number}}</h6>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-col>
+          <ion-col size="12">
+            <ion-list>
+              <ion-item class="side-list-item">Home</ion-item>
+              <ion-item class="side-list-item">Support</ion-item>
+              <ion-item class="side-list-item">Contact us</ion-item>
+              <ion-item class="side-list-item">Feedback</ion-item>
+              <ion-item class="side-list-item">Refer and earn</ion-item>
+              <ion-item class="side-list-item">About Wayapay</ion-item>
+              <ion-item class="side-list-item">FAQ’s</ion-item>
+              <ion-item class="side-list-item">Rate Us</ion-item>
+              <ion-item class="side-list-item">Privacy Policy</ion-item>
+              <ion-item class="side-list-item" (click)="logOut()">Logout</ion-item>
+              <ion-item class="side-list-item">Delete account</ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+      </ng-container>
+
+
+    </ion-grid>
+  </ion-content>
+</ion-menu>
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-grid class="ion-no-padding ion-no-margin">
+      <ion-row>
+        <ion-col size="6">
+          <div class="back-btn-wrapper">
+            <button ion-button menuToggle (click)="openMenu()" class="hambugger-btn">
+              <ion-icon name="menu"></ion-icon>
+            </button>
+          </div>
+        </ion-col>
+        <ion-col size="6" class="top-nav-logo-wrapper">
+          <button ion-button menuToggle class="hambugger-btn header-icons" routerLink="/account/notifications">
+            <ion-icon name="notifications-outline"></ion-icon>
+          </button>
+          <button ion-button menuToggle class="hambugger-btn header-icons" routerLink="/account/wallet">
+            <ion-icon name="wallet"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="content">
+  <ion-grid class="ion-no-padding ion-no-margin">
+    <ion-row *ngIf="userProfile">
+      <ion-col size="12" class="home-header-wrapper">
+        <div class="home-title-wrapper">
+          <h6 class="hello-title">Hello, {{userProfile.profile.first_name}}! <span> Welcome back.</span></h6>
+        </div>
+        <div class="home-tabs-wrapper">
+          <div class="home-tabs-item" (click)="routeToCard()">
+
+            <div class="tab-amt-wrapper full-height">
+              <div class="amt-wrapper">
+                <span>7,003.89</span>
+              </div>
+              <div class="currency-wrapper">
+                <div> <img src="https://www.countryflags.io/us/flat/32.png">
+                </div>
+                <div class="add-balance-subtitle"> <span>USD</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="tab-shortcuts-wrapper">
+              <div class="shortcut-item" (click)="redirectToAdd()">
+                <div class="shortcut-icon-wrapper">
+                  <ion-icon name="add"></ion-icon>
+                </div>
+                <div class="add-balance-subtitle">
+                  <span>Add</span>
+                </div>
+              </div>
+              <div class="shortcut-item" (click)="redirectToSend()">
+                <div class="shortcut-icon-wrapper">
+                  <ion-icon name="share-alt"></ion-icon>
+                </div>
+                <div class="add-balance-subtitle">
+                  <span>Send</span>
+                </div>
+              </div>
+              <div class="shortcut-item" (click)="redirectToConvert()">
+                <div class="shortcut-icon-wrapper">
+                  <ion-icon name="repeat"></ion-icon>
+                </div>
+                <div class="add-balance-subtitle">
+                  <span>Convert</span>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <div class="home-tabs-item">
+            <div class="add-balance-title" (click)="addBalance()">
+              <span>Add a balance</span>
+            </div>
+            <div class="add-balance-subtitle">
+              <p>to hold and receive money within Wayapay</p>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col size="12">
+        <ion-grid class="ion-no-padding ion-no-margin">
+          <ion-row>
+            <ion-col size="12" class="recent-title-wrapper">
+              <span class="recent-activity">Recent activity</span>
+            </ion-col>
+            <ion-col size="12">
+              <ion-list>
+                <ng-container *ngFor="let i of dummyData">
+                  <ion-item-sliding class="list-item-wrapper">
+                    <ion-item>
+                      <ion-avatar slot="start">
+                        <div class="list-icon-wrapper arrow-icon-wrapper">
+                          <img src="../../assets/icons/arrow.svg" alt="arrow" class="arror-img">
+                        </div>
+                      </ion-avatar>
+                      <ion-label>
+                        <h6 class="transaction-item-amt">{{i.amount}}</h6>
+                        <h6>{{i.name}}</h6>
+                        <p>{{i.date}}</p>
+                      </ion-label>
+                    </ion-item>
+                    <ion-item-options side="start">
+                      <ion-item-option (click)="sendMoney(i)">Send</ion-item-option>
+                    </ion-item-options>
+                    <ion-item-options side="end">
+                      <ion-item-option color="danger" (click)="removeReferee(i)">Remove</ion-item-option>
+                    </ion-item-options>
+                  </ion-item-sliding>
+                </ng-container>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

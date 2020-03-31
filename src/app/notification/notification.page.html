@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-grid no-margin no-padding>
+      <ion-row>
+        <ion-col size="12">
+          <div class="back-btn-wrapper" (click)="backRedirect()">
+            <ion-icon name="arrow-back"></ion-icon><span> {{title}}</span>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col size="12" class="notification-item-wrapper" padding>
+        <ion-grid no-padding>
+          <ion-row no-padding>
+            <ion-col size="12" (click)="toggleNotification()">
+              <span class="title-txt">Registration Completed</span>
+              <ion-icon name="arrow-dropdown" color="primary" class="arrow-toggle" *ngIf="!notificationClicked">
+              </ion-icon>
+              <ion-icon name="arrow-dropup" color="primary" class="arrow-toggle" *ngIf="notificationClicked"></ion-icon>
+            </ion-col>
+
+            <ion-col size="12">
+              <ng-container *ngIf="notificationClicked">
+                <p class="notification-txt">Thank you for registering with Wayapay. You can now log in
+                  And send money across the world, with ease and convenience</p>
+              </ng-container>
+              <span class="notification-time">13/08/2019, 01.24 pm</span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

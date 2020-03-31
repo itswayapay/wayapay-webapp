@@ -1,0 +1,154 @@
+<!-- <ion-header>
+  <ion-toolbar color="primary">
+    <ion-grid no-margin no-padding>
+      <ion-row>
+        <ion-col size="6">
+          <div class="back-btn-wrapper" (click)="backRedirect()">
+            <ion-icon name="arrow-back"></ion-icon><span> Login</span>
+          </div>
+        </ion-col>
+        <ion-col size="6" class="top-nav-logo-wrapper">
+          <img src="../../../assets/logo/icon-white.svg" alt="Wayapay" routerLink="/account">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row no-padding>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Phone Number</ion-label>
+          <ion-input inputmode="text" name="phonenumber" placeholder="Phone Number" required="true">
+          </ion-input>
+        </ion-item>
+        <p padding class="input-hint">Wayapay will send a verification code to your phone</p>
+      </ion-col>
+      <ion-col size="12" class="ion-align-self-ceter next-btn-wrapper">
+        <ion-button shape="round" class="primary-btn-lg" strong="true" expand="full" (click)="submitVerification()">Next
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content> -->
+
+
+
+<ion-header color="primary">
+  <ion-toolbar color="primary">
+    <ion-grid no-margin no-padding>
+      <ion-row>
+        <ion-col size="12">
+          <div class="back-btn-wrapper" (click)="backRedirect()">
+            <ion-icon name="arrow-back"></ion-icon><span> </span>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid class="pin-wrapper">
+    <ion-row no-padding>
+
+      <ng-container *ngIf="!clickedSubmit; else loadingTemp">
+        <ng-container *ngIf="hasLocPin; else confirmPinTemp">
+          <ion-col size="12" padding>
+            <p class="auth-pin-header">Welcome back
+            </p>
+            <p class="auth-pin-description">Please enter your secure m-banking PIN.</p>
+          </ion-col>
+          <ion-col size="12">
+            <form (keydown.enter)="$event.preventDefault()" class="verify-form-auth">
+              <input (keyup)="updateList(input1, input2)" #input1 type="number" maxlength="1" id="input-1" name="input1"
+                required>
+              <input (keyup)="updateList(input2, input3)" #input2 type="number" maxlength="1" id="input-2" name="input2"
+                required>
+              <input (keyup)="updateList(input3, input4)" #input3 type="number" maxlength="1" id="input-3" name="input3"
+                required>
+              <input type="number" maxlength="1" (keyup)="updateLast(input4)" #input4 id="input-4" name="input4"
+                required>
+            </form>
+          </ion-col>
+        </ng-container>
+        <ng-template #confirmPinTemp>
+          <ion-col size="12" padding>
+            <p class="auth-pin-header">Welcome back
+            </p>
+            <p class="auth-pin-description">Please enter your national ID.</p>
+          </ion-col>
+          <ion-col size="12">
+            <ion-row [formGroup]="loginFormGroup">
+              <ion-col size="12" class="ion-padding">
+                <ion-item color="primary" class="ion-no-margin ion-no-padding">
+                  <ion-label position="floating">National ID </ion-label>
+                  <ion-input appFormControlValidationMsg validationMsgId="national_id" name="national_id" maxlength="9"
+                    formControlName="national_id" type="number" required></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size="12" class="ion-align-self-ceter pt-20 ion-padding">
+                <ion-button class="primary-btn-lg" shape="round" color="light" strong="true" expand="full"
+                  (click)="submitID()" [disabled]="!loginFormGroup.valid" appFormSubmitValidationMsg
+                  [validationControl]="loginFormGroup">
+                  Continue</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ng-template>
+
+
+      </ng-container>
+      <ng-template #loadingTemp>
+
+        <ion-col size="12" class="verif-loading-wrapper">
+
+          <ng-container *ngIf="!loginStatus; else successTemp">
+            <ion-row no-padding no-margin>
+              <ion-col size="12" class="ion-text-center">
+                <h3 class="title-txt verif-title-txt">Loading...</h3>
+              </ion-col>
+              <ion-col size="12" class="loading-top-wrapper">
+                <div class="spinner -white">
+                  <div class="double-bounce1-white"></div>
+                  <div class="double-bounce2-white"></div>
+                </div>
+              </ion-col>
+              <ng-container *ngIf="loadingData && loadingData.status">
+                <ion-col size="12" class="ion-text-center">
+                  <span class="loading-msg-txt-white">{{loadingData.message}}</span>
+                </ion-col>
+              </ng-container>
+            </ion-row>
+          </ng-container>
+          <ng-template #successTemp>
+            <ion-row class="ion-no-margin ion-no-padding">
+              <ion-col size="12" class="ion-text-center">
+                <h3 class="title-txt-white">Successfull verification</h3>
+                <p class="sub-title-txt-white">Click continue to procceed to your account</p>
+              </ion-col>
+              <ion-col size="12" class="ion-text-center success-tick-wrapper">
+                <img src="../../../assets/icons/tick_white.svg" class="loading-success-tick"
+                  alt="Successfull registration" class="loading-success-icon">
+              </ion-col>
+              <ion-col size="12" class="ion-align-self-ceter pt-20">
+                <ion-button class="primary-btn-lg white-btn" shape="round" strong="true" color="light" expand="full"
+                  fill="outline" (click)="routeToAccount()">Continue
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ng-template>
+
+
+        </ion-col>
+      </ng-template>
+      <!-- <ion-col size="12" class="auth-footer-wrapper">
+        <p>By creating a passcode, you agree to <br />
+          Wayapay’s terms and conditions</p>
+      </ion-col> -->
+    </ion-row>
+  </ion-grid>
+</ion-content>

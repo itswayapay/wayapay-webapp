@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-grid no-margin no-padding>
+      <ion-row>
+        <ion-col size="4">
+          <div class="back-btn-wrapper" (click)="backRedirect()">
+            <ion-icon name="arrow-back"></ion-icon><span> {{title}}</span>
+          </div>
+        </ion-col>
+        <ion-col size="4" class="center-logo-wrapper">
+          <img src="../../assets/logo/transparent-logo.svg" alt="Wayapay" routerLink="/account" class="center-logo">
+        </ion-col>
+        <ion-col size="4">
+          <div (click)="addRedirect()" class="right-icon-wrapper">
+            <ion-icon name="add" class="nav-right-icon"></ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment (ionChange)="segmentChanged($event)" [(ngModel)]="selectTab" color="primary" class="segment-wrapper">
+    <ion-segment-button value="accounts">
+      <ion-label class="selector-title">Accounts</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="privacy" disabled="true">
+      <ion-label class="selector-title">Privacy</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ng-container *ngIf="selectTab ==='accounts'; else privacyTemp">
+    <ion-grid no-padding class="body-wrapper">
+      <ng-container *ngFor="let i of availableCards">
+
+        <ion-row no-padding class="account-card-wrapper">
+          <ion-col size="12" class="card-top-wrapper">
+            <ion-grid no-padding>
+              <ion-row no-padding>
+                <ion-col size="12">
+                  <div class="account-card-header-wrapper">
+                    <div>
+                      <ion-icon *ngIf="i.default" name="radio-button-on" color="primary" class="card-active-icon">
+                      </ion-icon>
+                      <span class="card-title">{{i.name}}</span>
+                      <span class="card-sub-title" *ngIf="i.default">DEFAULT</span>
+                    </div>
+                    <div>
+                      <img src="../../assets/icons/more.svg" alt="more" class="more-icon">
+                    </div>
+                  </div>
+                </ion-col>
+              </ion-row>
+              <ion-col size="12">
+                <div class="divider">&nbsp;&nbsp;</div>
+              </ion-col>
+              <ion-col size="12">
+                <div class="card-number-wrapper">
+                  <div>
+                    <img src="{{i.cardImg}}" alt="visa">
+                  </div>
+                  <div>
+                    <span class="card-number-txt">{{i.cardNumber}}</span>
+                  </div>
+                </div>
+              </ion-col>
+              <ion-col size="12">
+                <div class="total-sent-wrapper">
+                  <div><span class="total-sent-txt">TOTAL SENT: <b>USD {{i.amtSent | number}}</b></span>
+                  </div>
+                  <div class="month-select-wrapper">
+                    <ion-icon name="calendar" color="primary"></ion-icon>
+                    <ion-select [(ngModel)]="i.selectDate" placeholder="3M" class="select-month">
+                      <ion-select-option value="3m">3M</ion-select-option>
+                      <ion-select-option value="6m">6M</ion-select-option>
+                      <ion-select-option value="1y">1Y</ion-select-option>
+                    </ion-select>
+                  </div>
+                </div>
+              </ion-col>
+              <ion-col size="12">
+                <div class="total-sent-wrapper">
+                  <div><span class="total-sent-txt">LAST TRANSACTION: <b>USD {{i.lastAmt | number }}</b></span>
+                  </div>
+                  <div class="month-select-wrapper">
+                    <span class="last-transaction-date">{{i.lastDate}}</span>
+                  </div>
+                </div>
+              </ion-col>
+            </ion-grid>
+          </ion-col>
+        </ion-row>
+      </ng-container>
+    </ion-grid>
+  </ng-container>
+  <ng-template #privacyTemp>
+    <ion-grid no-padding class="body-wrapper">
+      <ion-row no-padding>
+        <ion-col size="12" class="card-top-wrapper">
+          <p>privacy</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-template>
+
+</ion-content>

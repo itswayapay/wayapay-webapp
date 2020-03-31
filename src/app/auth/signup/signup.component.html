@@ -1,0 +1,141 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-grid class="ion-no-margin ion-no-padding">
+      <ion-row>
+        <ion-col size="6">
+          <div class="back-btn-wrapper" (click)="backRedirect()">
+            <ion-icon name="arrow-back"></ion-icon><span> Sign Up</span>
+          </div>
+        </ion-col>
+        <ion-col size="6" class="top-nav-logo-wrapper">
+          <img src="../../../assets/logo/icon-white.svg" alt="Wayapay" routerLink="/account">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-margin">
+    <ion-row class="ion-no-margin ion-no-padding" [formGroup]="registerFormGroup"
+      *ngIf="!clickedSubmit; else loadingTemp">
+      <ion-col size="6">
+        <ion-item class="ion-no-margin ion-no-padding">
+          <ion-label position="floating">First Name</ion-label>
+          <ion-input type="text" placeholder="" name="first_name" formControlName="first_name"
+            appFormControlValidationMsg validationMsgId="first_name" required>
+          </ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item class="ion-no-margin ion-no-padding">
+          <ion-label position="floating">Surname</ion-label>
+          <ion-input type="text" placeholder="" name="last_name" formControlName="last_name" appFormControlValidationMsg
+            validationMsgId="last_name" required>
+          </ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-item class="ion-no-margin ion-no-padding">
+          <ion-label position="floating">National ID</ion-label>
+          <ion-input type="number" placeholder="" name="national_id" maxlength="9" formControlName="national_id"
+            appFormControlValidationMsg validationMsgId="national_id" required>
+          </ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-item class="ion-no-margin ion-no-padding">
+          <ion-label position="floating">Phone Number</ion-label>
+          <ion-input type="number" name="phone_number" placeholder="0720000000" maxlength="12"
+            formControlName="phone_number" appFormControlValidationMsg validationMsgId="phone_number" required>
+          </ion-input>
+        </ion-item>
+        <p class="input-hint">Wayapay will send a verification code to your phone</p>
+      </ion-col>
+      <!-- <ion-col size="12">
+        <ion-item class="ion-no-margin ion-no-padding">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" placeholder="" name="email" required>
+          </ion-input>
+        </ion-item>
+        <span class="input-error">Please provide your Phone number</span>
+      </ion-col> -->
+
+      <!-- <ion-col size="6">
+        <ion-item class="ion-no-margin ion-no-padding">
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" placeholder="" name="password" formControlName="password"
+            appFormControlValidationMsg validationMsgId="password" required>
+          </ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item class="ion-no-margin ion-no-padding">
+          <ion-label position="floating">Confirm Password</ion-label>
+          <ion-input type="password" placeholder="" name="password_confirmation" formControlName="password_confirmation"
+            appFormControlValidationMsg validationMsgId="password_confirmation" required>
+          </ion-input>
+        </ion-item>
+      </ion-col> -->
+      <ion-col size="12">
+        <ion-item class="ion-no-margin ion-no-padding">
+          <ion-checkbox color="primary" slot="start" name="terms" formControlName="terms" appFormControlValidationMsg
+            validationMsgId="terms" required>
+          </ion-checkbox>
+          <span class="form-terms-txt">By clicking Register you are agreeing to WayaPay’s Terms and conditions</span>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12" class="ion-align-self-ceter pt-20">
+        <ion-button class="primary-btn-lg" shape="round" strong="true" expand="full" (click)="submitForm()"
+          [disabled]="!registerFormGroup.valid && !clickedSubmit" appFormSubmitValidationMsg
+          [validationControl]="registerFormGroup">
+          Continue</ion-button>
+      </ion-col>
+      <ion-col size="12" class="ion-align-self-ceter">
+        <ion-button class="primary-btn-lg" shape="round" strong="true" expand="full" color="primary" fill="outline"
+          (click)="backRedirect()">
+          Cancel
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ng-template #loadingTemp>
+      <ng-container *ngIf="!registrationStatus; else successTemp">
+        <ion-row class="ion-no-margin ion-no-padding">
+          <ion-col size="12" class="ion-text-center">
+            <h3 class="title-txt">Loading...</h3>
+          </ion-col>
+          <ion-col size="12" class="loading-top-wrapper">
+            <div class="spinner">
+              <div class="double-bounce1"></div>
+              <div class="double-bounce2"></div>
+            </div>
+          </ion-col>
+          <ng-container *ngIf="loadingData && loadingData.status">
+            <ion-col size="12" class="ion-text-center">
+              <span class="loading-msg-txt">{{loadingData.message}}</span>
+            </ion-col>
+          </ng-container>
+        </ion-row>
+      </ng-container>
+      <ng-template #successTemp>
+        <ion-row class="ion-no-margin ion-no-padding">
+          <ion-col size="12" class="ion-text-center">
+            <h3 class="title-txt">Successfull registration</h3>
+            <p class="sub-title-txt">Click on continue to verify your account</p>
+          </ion-col>
+          <ion-col size="12" class="ion-text-center success-tick-wrapper">
+            <img src="../../../assets/icons/tick.svg" class="loading-success-tick" alt="Successfull registration"
+              class="loading-success-icon">
+          </ion-col>
+          <ion-col size="12" class="ion-align-self-ceter pt-20">
+            <ion-button class="primary-btn-lg" shape="round" strong="true" expand="full" fill="outline"
+              (click)="routeToVerify()">Continue
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ng-template>
+    </ng-template>
+
+  </ion-grid>
+</ion-content>

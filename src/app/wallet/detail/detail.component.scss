@@ -1,0 +1,121 @@
+@import '../../../global';
+.currency-txt {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+.currency-span-txt {
+    font-size: 10px;
+    padding-left: 5px;
+    color: #9b9b9b;
+}
+.bottom-btn-wrapper {
+    margin-top: 50%;
+}
+
+.background-wrapper {
+    background-color: $primaryWhite;
+}
+.background-top {
+    height: 30vh;
+    background-color: $primaryGreen;
+}
+
+.close-icon {
+    cursor: pointer;
+    outline: none;
+}
+
+.body-content-wrapper{
+    @include displayRow;
+    height: 80vh;
+    background-color: $primaryWhite;
+    position: absolute;
+    top: 3vh;
+    width: 90%;
+    left: 5%;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 2px 1px $backgroundSecondaryColorLight;
+    
+    div:nth-child(1){
+        height: 20px;
+        width: 100%;
+    }
+    div:nth-child(2){
+        width: 100%;
+        height: 130px;
+    }
+    div:nth-child(3){
+        width: 100%;
+        height: calc(100% - 130px);
+    }
+    .wallet-details-title, .add-balance-subtitle{
+        color: $textGrey;
+        font-size: 13px;
+    }
+    .wallet-details-wrapper {
+        .wallet-details-title {
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        .wallet-account-det-wrapper {
+            @include displayRow;
+            div:nth-child(1){
+                width: 70%;
+            }
+            div:nth-child(2){
+                width: 30%;
+            }
+            .wallet-amt-wrapper {
+                height: 50px;
+                font-size: 35px;
+                font-weight: 800;
+                color: $primaryGreen;
+            }
+            .wallet-currency-wrapper {
+                height: 50px;
+                @include displayRow;
+                justify-content: center;
+                div:nth-child(1){
+                    width: fit-content;
+                }
+                .wallet-currency-txt {
+                    color: $textGrey;
+                    font-size: 10px;
+                    margin-left: 10px;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+    .wallet-shortcuts-wrapper {
+        @include displayRow;   
+        justify-content: center;
+        div {
+            width: fit-content;
+        }
+        .wallet-shortcut-item {
+            width: 60px;
+            height: 20px;
+            @include displayRow;   
+            margin: 0 auto;
+            div {
+                width: 100%;
+            }
+            .shortcut-icon-wrapper {
+                width: 60px;
+                height: 60px;
+                background-color: $borderLightGrey;
+                display: grid;
+                place-content: center;
+                margin-bottom: 10px;
+                border-radius: 2px;
+            }
+        }
+        .add-balance-subtitle {
+            text-align: center;
+        }
+    }
+}

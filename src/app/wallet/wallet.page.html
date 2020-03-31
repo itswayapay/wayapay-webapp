@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-grid no-margin no-padding>
+      <ion-row>
+        <ion-col size="12">
+          <div class="back-btn-wrapper" (click)="backRedirect()">
+            <ion-icon name="arrow-back"></ion-icon><span> {{title}}</span>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row padding>
+      <ion-col size="12" *ngFor="let i of dummyAcc">
+        <div class="home-tabs-wrapper" (click)="redirectToDetails(i)">
+          <div class="home-tabs-item add-border">
+            <div class="tab-amt-wrapper">
+              <div class="amt-wrapper">
+                <span>{{i.amount | number}}</span>
+              </div>
+              <div class="currency-wrapper">
+                <div> <img src="https://www.countryflags.io/{{i.code}}/flat/32.png">
+                </div>
+                <div class="add-balance-subtitle"> <span>{{i.currency}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="tab-shortcuts-wrapper">
+              <!-- Add Shortcut start -->
+              <div class="shortcut-item" (click)="redirectToAdd()">
+                <div class="shortcut-icon-wrapper">
+                  <ion-icon name="add"></ion-icon>
+                </div>
+                <div class="add-balance-subtitle">
+                  <span>Add</span>
+                </div>
+              </div>
+              <!-- Add Shortcut End   -->
+              <!-- Send Shortcut Start -->
+              <div class="shortcut-item" (click)="redirectToSend()">
+                <div class="shortcut-icon-wrapper">
+                  <ion-icon name="share-alt"></ion-icon>
+                </div>
+                <div class="add-balance-subtitle">
+                  <span>Send</span>
+                </div>
+              </div>
+              <!-- Send Shortcut End   -->
+              <!-- Convert Shortcut Start-->
+              <div class="shortcut-item" (click)="redirectToConvert()">
+                <div class="shortcut-icon-wrapper">
+                  <ion-icon name="repeat"></ion-icon>
+                </div>
+                <div class="add-balance-subtitle">
+                  <span>Convert</span>
+                </div>
+              </div>
+              <!-- Convert Shortcut End   -->
+            </div>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col size="12">
+        <div class="home-tabs-wrapper">
+          <div class="home-tabs-item add-border remove-left-margin" (click)="addBalance()">
+            <div class="add-balance-title ">
+              <span>Add a balance</span>
+            </div>
+            <div class="add-balance-subtitle">
+              <p>to hold and receive money</p>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

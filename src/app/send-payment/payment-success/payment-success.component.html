@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-grid no-margin no-padding>
+      <ion-row>
+        <ion-col size="6">
+          <div class="back-btn-wrapper" (click)="backRedirect()">
+            <ion-icon name="arrow-back"></ion-icon><span> {{title}}</span>
+          </div>
+        </ion-col>
+        <ion-col size="6" class="top-nav-logo-wrapper">
+          <img src="../../../assets/logo/icon-white.svg" alt="Wayapay" routerLink="/account">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" padding class="header-wrapper">
+        <span class="title-txt">Hempstone,</span><br />
+        <span class="title-txt">Your money is on its way.</span>
+      </ion-col>
+      <ion-col size="12" class="success-wrapper">
+        <img src="../../../assets/icons/tick.svg" alt="">
+      </ion-col>
+      <ion-col size="12" class="success-wrapper">
+        <p class="success-txt-1">Your recipient should receive the
+          money in a few minutes.</p>
+        <h3 class="success-txt-1">Thank you for using Wayapay</h3>
+      </ion-col>
+      <ion-col size="12" class="ion-align-self-ceter" padding>
+        <ion-button class="primary-btn-lg" shape="round" strong="true" expand="full" (click)="continue()">Continue
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

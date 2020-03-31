@@ -1,0 +1,7 @@
+{
+  "name": "wayapay",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-grid no-margin no-padding>
+      <ion-row>
+        <ion-col size="6">
+          <div class="back-btn-wrapper" (click)="backRedirect()">
+            <ion-icon name="arrow-back"></ion-icon><span> {{title}}</span>
+          </div>
+        </ion-col>
+        <ion-col size="6" class="top-nav-logo-wrapper">
+          <img src="../../../assets/logo/icon-white.svg" alt="Wayapay" routerLink="/account">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" padding>
+        <span class="title-txt">How do you want to pay?</span>
+      </ion-col>
+      <ion-col size="12" class="card-top-container-wrapper">
+        <div class="card-container-wrapper">
+          <div padding>
+            <ion-col size="12" class="">
+              <span class="youl-pay-txt">You’ll pay</span>
+            </ion-col>
+            <ion-col size="12" class="amt-txt-wrapper">
+              <div>
+                <span class="title-txt">1,004.00</span>
+              </div>
+              <div class="currency-txt">
+                <span class="title-txt ">USD</span>
+              </div>
+            </ion-col>
+            <ion-col size="12">
+              <span class="pay-amt-txt">Payment account: Hempstone Maroria</span>
+            </ion-col>
+            <ion-col size="12" class="card-type-wrapper">
+              <div class="card-wrapper">
+                <img src="../../../assets/payment/visa.png" alt="">
+              </div>
+              <div class="select-wrapper">
+                <ion-item>
+                  <ion-label>{{selectCard}}</ion-label>
+                  <ion-select placeholder="" [(ngModel)]="selectCard" style="width:100%;">
+                    <ion-select-option value="*** *** *** 6767">card 1</ion-select-option>
+                    <ion-select-option value="*** *** *** 5639">card 2</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </div>
+            </ion-col>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col size="12" no-padding class="add-payment-wrapper">
+        <ion-list>
+          <ion-item-sliding class="transaction-item" (click)="navigateToAdd()">
+            <ion-item>
+              <ion-avatar slot="start">
+                <div class="list-icon-wrapper">
+                  <img src="../../assets/icons/card.svg" alt="arrow" class="arror-img">
+                </div>
+              </ion-avatar>
+              <ion-label>
+                <p>Add new payment method</p>
+              </ion-label>
+            </ion-item>
+          </ion-item-sliding>
+        </ion-list>
+      </ion-col>
+
+      <ion-col size="12" class="ion-align-self-ceter">
+        <ion-button class="primary-btn-lg" shape="round" strong="true" expand="full" (click)="continue()">Continue
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-grid no-margin no-padding>
+      <ion-row>
+        <ion-col size="6">
+          <div class="back-btn-wrapper" (click)="backRedirect()">
+            <ion-icon name="arrow-back"></ion-icon><span> {{title}}</span>
+          </div>
+        </ion-col>
+        <ion-col size="6" class="top-nav-logo-wrapper">
+          <img src="../../../assets/logo/icon-white.svg" alt="Wayapay" routerLink="/account">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row no-padding>
+      <ion-col size="12" class="select-destination-wrapper">
+        <div>
+          <span class="destinayion-txt">Destination Country</span>
+        </div>
+        <div>
+          <img src="https://www.countryflags.io/{{receiveCurrency}}/flat/32.png" class="select-img">
+        </div>
+        <div>
+          <ion-select color="primary" placeholder="{{receiveCurrency}}" [(ngModel)]="receiveCurrency">
+            <ion-select-option value="ke" (ionChange)="fromCurrencyChange(receiveCurrency)"> <img
+                src="https://www.countryflags.io/{{receiveCurrency}}/flat/32.png">Kenya
+            </ion-select-option>
+            <ion-select-option value="us"> <img src="https://www.countryflags.io/{{receiveCurrency}}/flat/32.png">United
+              States
+            </ion-select-option>
+          </ion-select>
+        </div>
+      </ion-col>
+
+      <ion-col size="12" class="pl-10">
+        <span class="form-title">How much are you sending?</span>
+      </ion-col>
+      <ion-col size="8" class="pl-10">
+        <div class="border-input">
+          <ion-input class="input-field" type="number" inputmode="number" name="send_amount" [(ngModel)]="send_amount"
+            value="{{send_amount || 0.0 }}" required="true" (keyup)="toCurrencyChange(sendCurrency)">
+          </ion-input>
+        </div>
+      </ion-col>
+      <ion-col size="4" class="" align-self-end>
+        <ion-item class="select-border" color="primary">
+          <ion-select color="primary" no-padding placeholder="{{sendCurrency}}" [(ngModel)]="sendCurrency"
+            class="select-currency" (ionChange)="toCurrencyChange(sendCurrency)">
+            <ion-select-option value="ke">KES</ion-select-option>
+            <ion-select-option value="us">USD</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" class="pl-10">
+        <span class="form-title">Your recipient will receive
+        </span>
+      </ion-col>
+      <ion-col size="8" class="pl-10">
+        <div class="border-input">
+          <ion-input class="input-field" type="number" inputmode="number" name="receive_amount"
+            [(ngModel)]="receive_amount" required="true" value="{{receive_amount || 0.0 }}"
+            (keyup)="fromCurrencyChange(receiveCurrency)">
+          </ion-input>
+        </div>
+      </ion-col>
+      <ion-col size="4" class="" align-self-end>
+        <ion-item class="select-border" color="primary">
+          <ion-select color="primary" no-padding placeholder="{{receiveCurrency}}" [(ngModel)]="receiveCurrency"
+            class="select-currency" (ionChange)="fromCurrencyChange(receiveCurrency)">
+            <ion-select-option value="ke">KES</ion-select-option>
+            <ion-select-option value="us">USD</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12" padding class="input-list-wrapper">
+        <p class="exchange-rate-txt">Exchange Rate: USD 1 = KES 103.7</p>
+      </ion-col>
+      <ion-col size="12" padding (click)="toggleSummary()">
+        <span class="title-txt">Transaction Summary</span>
+        <ion-icon name="arrow-dropdown" color="primary" class="arrow-toggle" *ngIf="!summaryItem"></ion-icon>
+        <ion-icon name="arrow-dropup" color="primary" class="arrow-toggle" *ngIf="summaryItem"></ion-icon>
+      </ion-col>
+      <ion-col size="12" class="transaction-top-wrapper" *ngIf="summaryItem">
+        <div class="transaction-wrapper">
+          <div class="transaction-item"><span>You're sending</span> <span>{{send_amount || 0.0 | number:'1.0-0'}}
+              {{sendCurrency | uppercase}}</span>
+          </div>
+          <div class="transaction-item"><span>Transaction fee</span> <span>4.99 USD</span></div>
+          <div class="transaction-item"><span>Bill total</span>
+            <span>{{receive_amount*1 +  4.99 || 0.0 | number:'1.0-0'}}
+              {{sendCurrency | uppercase}}</span></div>
+          <div class="transaction-item"><span>Recipient receives</span>
+            <span>{{receive_amount || 0.0 | number:'1.0-0'}}
+              {{receiveCurrency | uppercase}}</span></div>
+
+          <!-- <div class="transaction-item"><span>Exchange Rate</span> <span>1 USD = 103.71 KES</span></div> -->
+        </div>
+      </ion-col>
+      <ion-col size="12" padding>
+        <p class="wayapay-guarantee">Wayapay offers a money back guarantee to give you a peace of mind</p>
+      </ion-col>
+
+      <ion-col size="12" class="ion-align-self-ceter">
+        <ion-button [disabled]="!send_amount || send_amount == 0" class="primary-btn-lg" shape="round" strong="true"
+          expand="full" (click)="continue()">Continue
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

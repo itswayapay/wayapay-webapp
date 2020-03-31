@@ -1,0 +1,174 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-grid no-margin no-padding>
+      <ion-row>
+        <ion-col size="6">
+          <div class="back-btn-wrapper" (click)="backRedirect()">
+            <ion-icon name="arrow-back"></ion-icon><span> {{title}}</span>
+          </div>
+        </ion-col>
+        <ion-col size="6" class="top-nav-logo-wrapper">
+          <img src="../../../assets/logo/icon-white.svg" alt="Wayapay" routerLink="/account">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment (ionChange)="segmentChanged($event)" [(ngModel)]="selectTab" color="primary" class="segment-wrapper">
+    <ion-segment-button value="credit-card">
+      <ion-label class="selector-title">Debit Card</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="other" disabled="true">
+      <ion-label class="selector-title">Other</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ng-container *ngIf="!paymentLoading && !paymentSuccess; else loadingPayment">
+    <ng-container *ngIf="selectTab ==='credit-card'; else otherTemp">
+      <ion-grid no-padding>
+        <ion-row no-padding>
+          <ion-col size="12" class="card-top-wrapper">
+            <div class="card-wrapper">
+              <div class="card-img-wrapper">
+                <img src="../../../assets/logo/icon-white.svg " alt="Wayapay" class="card-wayapay-img">
+              </div>
+              <div class="card-details-wrapper">
+                <h6 class="card-title">CARD NUMBER</h6>
+                <h4 class="card-details">
+                  {{displayCardNumber}}
+                </h4>
+              </div>
+              <div class="card-details-bottom-wrapper">
+                <div>
+                  <h6 class="card-title">NAME</h6>
+                  <h4 class="card-details card-details-small ">
+                    {{ displayCardName | uppercase }}
+                  </h4>
+                </div>
+                <div>
+                  <h6 class="card-title">EXP</h6>
+                  <h4 class="card-details card-details-small">
+                    {{cardMonth || 07}}/{{cardYear || 2020}}
+                  </h4>
+                </div>
+                <div>
+                  <img src="{{cardTypeImg || '../../../assets/payment/disabled.png'}}" alt="visa card"
+                    class="visa-card-img">
+                </div>
+              </div>
+            </div>
+          </ion-col>
+
+          <ion-col size="12" class="card-form-wrapper">
+            <ion-item>
+              <ion-label position="floating">Card Name</ion-label>
+              <ion-input inputmode="number" [(ngModel)]="cardName" (ngModelChange)="displayCardName = cardName"
+                name="card-name" type="text" placeholder="Enter name on the card" required="true">
+              </ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="12">
+            <ion-item>
+              <ion-label position="floating">Card Number</ion-label>
+              <ion-input inputmode="number" (keyup)="updateCardNumber()" [(ngModel)]="cardNumber" name="card-number"
+                type="number" placeholder="Enter card number" required="true">
+              </ion-input>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item>
+              <ion-label position="floating">Month</ion-label>
+              <ion-select cancelText="Dismiss" [(ngModel)]="cardMonth" placeholder="Month">
+                <ion-select-option *ngFor="let i of [].constructor(12); let ind = index" value="{{ind + 1}}">{{ind +1 }}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item>
+              <ion-label position="floating">Year</ion-label>
+              <ion-select cancelText="Dismiss" [(ngModel)]="cardYear" placeholder="Year">
+                <ion-select-option *ngFor="let i of [].constructor(5); let ind = index" value="{{ind + 2019}}">
+                  {{ind + 2019 }}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+          <ion-col size="6">
+            <ion-item>
+              <ion-label position="floating">CVV</ion-label>
+              <ion-input inputmode="number" [(ngModel)]="cardCvv" maxlength="3" name="card-cvv" type="number"
+                placeholder="Enter card cvv" required="true">
+              </ion-input>
+            </ion-item>
+          </ion-col>
+
+          <ion-col size="12" class="ion-align-self-ceter" padding>
+            <ion-button class="primary-btn-lg" shape="round" strong="true" expand="full" color="primary" fill="outline"
+              (click)="addCard()">
+              Next
+            </ion-button>
+          </ion-col>
+          <ion-col size="12" class="payment-cards-wrapper">
+            <img src="../../../assets/payment/payment_cards.png" class="payment-cards" alt="payment cards">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-container>
+    <ng-template #otherTemp>
+      <ion-grid no-padding>
+        <ion-row no-padding>
+          <ion-col size="12" class="card-top-wrapper">
+            <p>Other payments</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-template>
+  </ng-container>
+  <ng-template #loadingPayment>
+
+    <ng-container *ngIf="paymentLoading; else successTemp;">
+      <ion-grid no-padding>
+        <ion-row no-padding>
+          <ion-col size="12">
+            <div class="spinner">
+              <div class="double-bounce1"></div>
+              <div class="double-bounce2"></div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-container>
+    <ng-template #successTemp>
+      <ion-grid>
+        <ion-row padding>
+          <ion-col size="12" class="success-icon-wrapper">
+            <img src="../../../assets/icons/tick.svg" alt="Success" class="success-tick">
+          </ion-col>
+          <ion-col size="12">
+            <h3 class="success-title">
+              Card Authentication Success!
+            </h3>
+          </ion-col>
+          <ion-col col-12>
+            <p class="primary-success-txt">Your credit card **** **** **** 9123<br />
+              has been added to Waya Pay.
+            </p>
+          </ion-col>
+
+          <ion-col size="12" class="ion-align-self-ceter">
+            <ion-button class="primary-btn-lg" shape="round" strong="true" expand="full" (click)="sendPayment()">Send a
+              Payment </ion-button>
+          </ion-col>
+          <ion-col size="12" class="ion-align-self-ceter">
+            <ion-button class="primary-btn-lg" shape="round" strong="true" expand="full" color="primary" fill="outline"
+              (click)="routerToApp()">
+              Continue to app
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-template>
+  </ng-template>
+</ion-content>

@@ -1,0 +1,42 @@
+<ion-header color="primary">
+  <ion-toolbar color="primary">
+    <ion-grid no-margin no-padding>
+      <ion-row>
+        <ion-col size="12">
+          <div class="back-btn-wrapper" (click)="backRedirect()">
+            <ion-icon name="arrow-back"></ion-icon><span> Back</span>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid class="pin-wrapper">
+    <ion-row no-padding>
+      <ion-col size="12" padding>
+        <p class="auth-pin-header">Create a new Payments PIN
+        </p>
+        <p class="auth-pin-description">This is the pin you'll use to access your Wayapay App and Confirm transactions
+          on the application</p>
+      </ion-col>
+      <ion-col size="12">
+        <form (keydown.enter)="$event.preventDefault()" class="verify-form-auth">
+          <input (keyup)="updateList(input1, input2)" #input1 type="number" maxlength="1" id="input-1" name="input1"
+            required>
+          <input (keyup)="updateList(input2, input3)" #input2 type="number" maxlength="1" id="input-2" name="input2"
+            required>
+          <input (keyup)="updateList(input3, input4)" #input3 type="number" maxlength="1" id="input-3" name="input3"
+            required>
+          <input type="number" maxlength="1" (keyup)="updateLast(input4)" #input4 id="input-4" name="input4" required>
+        </form>
+      </ion-col>
+      <ion-col size="12" class="auth-footer-wrapper">
+        <p>By creating a passcode, you agree to <br />
+          Wayapay’s terms and conditions</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

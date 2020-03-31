@@ -1,0 +1,40 @@
+<ion-header color="default">
+  <ion-toolbar color="default">
+    <ion-grid no-margin no-padding>
+      <ion-row>
+        <ion-col size="12">
+          <div class="back-btn-wrapper" (click)="backRedirect()">
+            <ion-icon name="arrow-back" color="primary"></ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row no-padding>
+      <ion-col size="12" padding>
+        <p class="wallet-header-description">Create a passcode for your Wayapay account.
+        </p>
+      </ion-col>
+      <ion-col size="12">
+        <form (keydown.enter)="$event.preventDefault()" class="verify-form">
+          <input placeholder="•" (keyup)="updateList(input1, input2)" #input1 type="number" maxlength="1" id="input-1"
+            name="input1" required>
+          <input placeholder="•" (keyup)="updateList(input2, input3)" #input2 type="number" maxlength="1" id="input-2"
+            name="input2" required>
+          <input placeholder="•" (keyup)="updateList(input3, input4)" #input3 type="number" maxlength="1" id="input-3"
+            name="input3" required>
+          <input placeholder="•" type="number" maxlength="1" (keyup)="updateLast(input4)" #input4 id="input-4"
+            name="input4" required>
+        </form>
+      </ion-col>
+      <ion-col size="12" class="wallet-footer-wrapper">
+        <p>By creating a passcode, you agree to <br />
+          Wayapay’s terms and conditions</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

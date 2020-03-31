@@ -1,0 +1,531 @@
+*{font-family:'Avenir Next Pro';}
+
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+$primaryGreen: #00BAB6;
+$secondaryGreen: #0f7775;
+$primaryWhite: #ffffff;
+$textGrey:#969696;
+$backgroundColor: #cce4eb;
+$backgroundColorLight: #cde8f0;
+$backgroundSecondaryColorLight: #ebebeb;
+$borderLightGrey: #f3f3f3;
+$blackSecondary: #505050;
+$transparentGreen: rgba(17, 186, 182, 0.58);
+$transparentBlack: rgba(58, 58, 58, 0.58);
+
+// GLOBAL STYLE START--------------->
+.pl-10 {
+  padding-left: 10px;
+}
+.pt-20 {
+  padding-top: 20px;
+}
+.pt-10 {
+  padding-top: 10px;
+}
+.pb-10 {
+  padding-bottom: 10px;
+}
+@mixin displayFlex($flow) {
+  display: flex;
+  flex-flow: $flow;
+}
+@mixin displayRow {
+  @include displayFlex(row);
+}
+@mixin displayColumn {
+  @include displayFlex(column);
+}
+// GLOBAL STYLE END  --------------->
+body {
+  max-width:700px;
+  display: grid;
+}
+
+// Buttons Start--------------->
+.back-btn-wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 19px;
+    padding-top: 10px;
+    ion-icon {
+        font-size: 24px;
+    }
+    span {
+        font-weight: 700;
+        padding-left: 10px;
+    }   
+}
+.primary-btn-lg {
+  height: 50px;
+}
+.white-btn {
+  color: $primaryGreen !important;
+}
+// Buttons End   --------------->
+
+// Top Nav Start --------------->
+.top-nav-logo-wrapper {
+    text-align: right;
+    padding: 0px;
+    img {
+        height: 40px;
+        padding-right: 10px;
+        outline: none;
+    }
+}
+// Top Nav End   --------------->
+
+// Form section start ----------->
+.input-hint,
+.form-hint {
+    color: $textGrey;
+    margin: 0px;
+    font-size: 10px;
+}
+.form-hint {
+  margin: 5px 10px;
+}
+.input-error {
+  color: var(--ion-color-danger);
+  display: inline-block;
+  font-size: 10px;
+}
+.form-terms-txt {
+  font-size: 12px;
+}
+// Form section End ----------->
+
+// Success Text Start---------------->
+.success-title {
+  text-align: center;
+  color: $primaryGreen;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+.success-icon-wrapper {
+  text-align: center;
+  // margin-top: 10%;
+}
+
+.success-tick {
+  height: 160px;
+  width: 160px;
+}
+.success-tick-wrapper {
+  place-content: center;
+  display: grid;
+  height: 50vh;
+}
+// Success text End  ---------------->
+
+// .ion-align-self-center{
+//   text-align: center;
+// }
+
+.title-txt, .title-txt-white {
+  font-size: 20px;
+}
+.title-txt,.title-txt-small, .title-txt-white {
+  font-weight: 700;
+  color: $primaryGreen;
+}
+
+.title-txt-small, .sub-title {
+  padding-left: 15px;
+  font-size: 14px;
+}
+.sub-title-txt, .sub-title-txt-white {
+  color: $textGrey;
+  margin: 0px;
+}
+.sub-title-txt-white, .title-txt-white {
+  color: $primaryWhite !important;
+}
+
+// List Item start ------------------->
+.list-item-wrapper {
+  h6 {
+      color: #00BAB6;
+      margin-bottom: 0px;
+  }
+  .transaction-item-amt{
+      margin: 0px;
+      position: absolute;
+      align-items: right;
+      right: 10px;
+      top: 27px;
+  }
+}
+.recent-title-wrapper{
+  border-bottom: 0.1px solid $borderLightGrey;
+  .recent-activity {
+      color: $textGrey;
+      font-size: 12px;
+      padding-left: 20px;
+  }
+}
+.list-icon-wrapper {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 2px 1px $backgroundSecondaryColorLight;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+      height: 40%;
+  }
+}
+// List Item End --------------------->
+
+// Card item Start ------------------->
+.card-container-wrapper, 
+.amt-txt-wrapper, 
+.card-type-wrapper {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+}
+.card-container-wrapper {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px 1px $backgroundSecondaryColorLight;
+    height: 200px;
+    
+    div {
+        width: 100%;
+    }
+}
+.youl-pay-txt {
+    font-size: 16px;
+    color: $textGrey;
+    font-weight: 800;
+}
+.amt-txt-wrapper {
+    border-bottom: 1px solid $borderLightGrey;
+    margin: 10px 0px;
+    div {
+        width:50%;
+    }
+    .currency-txt {
+        text-align: right;
+    } 
+}   
+.pay-amt-txt {
+    color: $primaryGreen;
+    font-weight: 600;
+}
+
+.card-type-wrapper {
+    margin-top: 20px;
+    
+    .card-wrapper {
+        border: 1px solid $borderLightGrey;
+        height: 40px;
+        width: 60px;
+        margin-top: 10px;
+        img {
+            height: 40px;
+            width:60px;
+        }
+    }
+    .select-wrapper {
+        width: calc(100% - 70px);
+        margin-left: 10px;
+    }
+}
+// Card item End   ------------------->
+
+@mixin displayRow {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+}
+
+// Verify Form Start ----------------->
+.verify-form, .verify-form-auth  {
+  @include displayRow();
+  padding-top: 30px;
+  justify-content: center;
+  input {
+      width: 11%;
+      border: 0px;
+      outline: none;
+      text-align: center;
+      margin-right: 15px;
+      margin-bottom: 30px;
+  }
+}
+.verify-form {
+  input {
+      border-bottom: 1px solid $textGrey;
+  }
+}
+
+.verify-form {
+  input {
+      border-bottom: 1px solid $textGrey;
+  }
+}
+.verify-form-auth {
+  input {
+    background-color: $primaryGreen;
+    color: $primaryWhite;
+    font-weight: 900;
+    border-bottom: 2px solid $secondaryGreen;
+  }
+}
+
+.verif-loading-wrapper {
+  height: 50vh;
+}
+.verif-title-txt {
+  color: $primaryWhite !important;
+}
+// Verify Form End   ----------------->
+
+// Loader Start ---------------->
+.loading-msg-txt, .loading-msg-txt-white {
+  color: $textGrey;
+  font-weight: 500;
+}
+.loading-msg-txt-white {
+  color: $primaryWhite !important;
+}
+.loading-top-wrapper {
+  height: 65vh;
+}
+.loading-success-icon {
+  height: auto;
+  max-height: 200px;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+  
+    position: relative;
+    margin: 100px auto;
+  }
+  .double-bounce2, .double-bounce1 {
+    background-color: $primaryGreen;
+
+  }
+  .double-bounce2-white, .double-bounce1-white {
+    background-color: $primaryWhite;
+
+  }
+  .double-bounce1, .double-bounce1-white, .double-bounce2, .double-bounce2-white {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+    animation: sk-bounce 2.0s infinite ease-in-out;
+  }
+  
+  .double-bounce2, .double-bounce2-white {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+  }
+  
+  @-webkit-keyframes sk-bounce {
+    0%, 100% { -webkit-transform: scale(0.0) }
+    50% { -webkit-transform: scale(1.0) }
+  }
+  
+  @keyframes sk-bounce {
+    0%, 100% { 
+      transform: scale(0.0);
+      -webkit-transform: scale(0.0);
+    } 50% { 
+      transform: scale(1.0);
+      -webkit-transform: scale(1.0);
+    }
+  }
+// Loader End   ---------------->
+
+
+
+// Homescreen Pills Start ------------>
+.home-tabs-wrapper {
+  display: flex;
+  flex-flow: row;
+  // margin-top: 10px;
+  // overflow-x: scroll;
+  // overflow-y: hidden;
+  white-space: nowrap;
+  min-width: 100%;
+  padding-bottom: 20px;
+  .home-tabs-item {  
+      background-color: $primaryWhite;
+      display: inline-block;
+      height: 13vh;
+      width: 45%;
+      border-radius: 20px;
+      padding: 15px;
+      margin: 0px auto;
+
+      .tab-amt-wrapper {
+          display: flex;
+          flex-flow: row;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          .currency-wrapper {
+              display: flex;
+              flex-flow: row;
+              justify-content: center;
+              align-items: center;
+          }
+          div:nth-child(1) {
+              width: 70%;
+              
+          }
+          .amt-wrapper{
+              color: $primaryGreen;
+              font-size: 100%;
+              font-weight: 800;
+            }
+          div:nth-child(2) {
+              width: 30%
+          }
+      }
+      .tab-shortcuts-wrapper {
+          display: flex;
+          flex-flow: row;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          align-items: center;
+          
+          .shortcut-item {
+              height: 30px;
+              width: 20px;
+              margin-right: 10px;
+              .shortcut-icon-wrapper {
+                  height: 15px;
+                  background-color: $borderLightGrey;
+                  border-radius: 2px;
+                  margin-bottom: 5px;
+                  margin-left: 5px;
+              }
+          }
+      }
+
+      .home-tabs-header {
+          color: $primaryGreen;
+          font-weight: 800;
+          font-size: 27px;
+          margin: 0px;
+      }
+      .home-tabs-subheader {
+          color: $secondaryGreen;
+          font-size: 30px;
+          font-weight: 400;
+          margin-top: 10px;
+      }
+      .add-balance-title, .add-balance-subtitle{
+          text-align: center;
+      }
+      .add-balance-title {
+          color:$primaryGreen;
+          font-weight: 800;
+          font-size: 20px;
+          margin: 5px 0px 0px;
+      }
+      .add-balance-subtitle {
+          font-size: 8px;
+          color: $textGrey;
+          p{
+              margin: 0px;
+              white-space: pre-wrap;
+          }
+      }
+  }
+}
+// Homescreen Pills End   ------------>
+
+
+// Exchange Rate Start ------------------->
+.exchange-rate-txt{
+  text-align: left;
+  color: $primaryGreen;
+  margin: 5px 0px;
+}
+// Exchange Rate End   ------------------->
+
+// Wallet Section Start ------------------>
+.wallet-header-description,.auth-pin-header {
+  text-align: center;
+  padding-top: 20%;
+  font-weight: 700;
+}
+.wallet-header-description {     
+  font-size: 20px;
+}
+.wallet-footer-wrapper, .auth-footer-wrapper {
+  text-align: center;
+  font-size: 9px;
+  font-weight: 600;
+  position: absolute;
+  bottom: 10px;
+}
+.wallet-footer-wrapper {
+  color: $textGrey;
+}
+.auth-footer-wrapper {
+  color: $primaryWhite;
+}
+
+.pin-wrapper{
+  background-color: $primaryGreen;
+  height: 100vh;
+}
+.auth-pin-header {
+  font-size: 24px;
+  color: $primaryWhite;
+}
+.auth-pin-description {
+  text-align: center;
+  color: $primaryWhite;;
+  margin: 0px;
+  font-size: 14px;
+}
+// Wallet Section Start ------------------>
+
+@media only screen and (min-width: 768px) {
+    /* tablets and desktop */
+}
+
+@media only screen and (max-width: 767px) {
+    /* phones */
+}
+
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+    /* portrait phones */
+}
+@media only screen and (max-width: 360px) {
+  /* small phones */
+  .add-balance-title {
+      margin: 0px 0px 0px;
+  }
+}

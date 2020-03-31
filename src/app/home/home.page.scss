@@ -1,0 +1,89 @@
+@import '../../global';
+.home-header-wrapper{
+    // background-image: linear-gradient(75deg,#00ba8f, #00BAB6, #00acba);
+    background-color: $primaryGreen;
+    height: 30vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    .home-title-wrapper {
+        width: 100%;
+        color: $primaryWhite;    
+        padding: 0px 15px;
+        .hello-title {
+            font-size: 18px;
+            font-weight: 900;
+            span {
+                font-weight: 500;
+            }
+        }
+    }
+}
+.full-height{
+    height: 100%;
+}
+
+.input-hint {
+    margin: 0px;
+}
+.city-img {
+    width: 1000%;
+    padding: 20px;
+}
+
+.send-money-wrapper {
+    margin-bottom: 15px;
+}
+
+
+.arrow-icon-wrapper {
+    img {
+        transform: rotate(40deg);
+    }
+    
+}
+
+// Side Menu Section start ---------------->
+.side-menu-header-wrapper {
+    background-image: url('../../assets/background/side-menu.svg');
+    background-size: cover;
+    background-position: right;
+    height: 30vh;
+    background-repeat: no-repeat;
+}
+.hambugger-btn, .header-icons {
+    background-color: $primaryGreen;
+    color:$primaryWhite;
+    outline: none;
+}
+.side-menu-logo{
+    height: 50px;
+    margin-top: 20px;
+}
+.side-menu-header {
+    margin: 0px;
+    color: #fff;
+    font-weight: 800;
+    font-size: 25px;
+}
+.side-menu-sub-header {
+    margin: 0px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.side-list-item{
+    color:$textGrey;
+    font-weight: 400;
+}
+.header-icons {
+    margin-top: 10px;
+    ion-icon {
+        font-size: 30px
+    }
+}
+// Side Menu Section End   ---------------->
+
